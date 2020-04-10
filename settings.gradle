@@ -1,0 +1,3 @@
+include 'client', 'server'
+rootProject.name = 'csc8510-covid19'
+

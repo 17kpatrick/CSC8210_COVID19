@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails:grails-plugin-codecs:4.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/4.0.3/894b2e42f740dd473d57cf7efa574b11fb005bc0/grails-plugin-codecs-4.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/4.0.3/6b8e411f87769f092247a6c39a52527c7b024f6f/grails-plugin-codecs-4.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

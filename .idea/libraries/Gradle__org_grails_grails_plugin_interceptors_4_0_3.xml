@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails:grails-plugin-interceptors:4.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/4.0.3/dd00a1386546b39a33b1aaaf6e5e120e65a87c31/grails-plugin-interceptors-4.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/4.0.3/c9df8ebaed924d09b0d28193b3b3c56dd9f4b9ee/grails-plugin-interceptors-4.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

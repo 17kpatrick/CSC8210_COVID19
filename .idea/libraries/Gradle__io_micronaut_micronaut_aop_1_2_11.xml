@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.micronaut:micronaut-aop:1.2.11">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.micronaut/micronaut-aop/1.2.11/ced766a085afb198534fa0e38f48164f301ffb89/micronaut-aop-1.2.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.micronaut/micronaut-aop/1.2.11/303a5246a22759502ed1055596f43be44d54adaa/micronaut-aop-1.2.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails:grails-web-testing-support:2.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-testing-support/2.1.1/a771f2f262a1740893d134b131da87b0c35e32bc/grails-web-testing-support-2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-testing-support/2.1.1/519da5fa59afbd1674aca8589857e856dae50dd6/grails-web-testing-support-2.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
