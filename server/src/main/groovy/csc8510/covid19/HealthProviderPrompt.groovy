@@ -2,9 +2,9 @@ package csc8510.covid19
 
 class HealthProviderPrompt {
     def question
-    ArrayList<HealthProviderPromptAnswer> answers
+    HealthProviderPromptAnswer[] answers
 
-    HealthProviderPrompt(question, ArrayList<HealthProviderPromptAnswer> answers) {
+    HealthProviderPrompt(question, answers) {
         this.question = question
         this.answers = answers
     }
@@ -17,11 +17,11 @@ class HealthProviderPrompt {
         this.question = question
     }
 
-    ArrayList<HealthProviderPromptAnswer> getAnswers() {
+    def getAnswers() {
         return answers
     }
 
-    void setAnswers(ArrayList<HealthProviderPromptAnswer> answers) {
+    void setAnswers(answers) {
         this.answers = answers
     }
 }

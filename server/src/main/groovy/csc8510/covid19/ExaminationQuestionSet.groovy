@@ -1,5 +1,10 @@
 package csc8510.covid19
 
+import com.google.gson.GsonBuilder
+import org.apache.commons.io.FileUtils
+
+import java.nio.charset.StandardCharsets
+
 class ExaminationQuestionSet
 {
 
@@ -13,18 +18,10 @@ class ExaminationQuestionSet
   }
 
   private static getQuestions(){
-    def questions = new ArrayList<HealthProviderPrompt>()
-
-    def questionText = "Have you traveled outside the country in the past 30 days?"
-    def answers = new ArrayList<HealthProviderPromptAnswer>();
-    answers.add(new HealthProviderPromptAnswer("Yes", 30))
-    answers.add(new HealthProviderPromptAnswer("No", 20))
-
-    questions.add(new HealthProviderPrompt(questionText, answers))
-
-    return questions
-
-
+    String data = FileUtils.readFileToString(new File("src\\main\\groovy\\csc8510\\covid19\\questionData\\questions.json"), StandardCharsets.UTF_8)
+    def gsonBuilder = new GsonBuilder()
+    def gson = gsonBuilder.create()
+    return gson.fromJson(data, HealthProviderPrompt[].class)
   }
 
   private ExaminationQuestionSet()
