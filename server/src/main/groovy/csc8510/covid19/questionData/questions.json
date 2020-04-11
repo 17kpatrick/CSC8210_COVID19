@@ -1,0 +1,169 @@
+[
+  {
+    "question": "When did your symptoms begin?",
+    "answers": []
+  },
+  {
+    "question": "What is your legal sex?",
+    "answers": [
+      {
+        "answer": "Male"
+      },
+      {
+        "answer": "Female"
+      },
+      {
+        "answer": "Other"
+      }
+    ]
+  },
+  {
+    "question": "What is your age?",
+    "answers": []
+  },
+  {
+    "question": "Do you have exposure to the public as part of your profession or daily routine?",
+    "answers": [
+      {
+        "answer": "Yes, daily"
+      },
+      {
+        "answer": "Yes, occasionally"
+      },
+      {
+        "answer": "No"
+      }
+    ]
+  },
+  {
+    "question": "Have you been in contact with anyone infected with COVID-19?",
+    "answers": [
+      {
+        "answer": "Yes"
+      },
+      {
+        "answer": "No"
+      },
+      {
+        "answer": "Unknown"
+      }
+    ]
+  },
+  {
+    "question": "What symptoms have you experienced?",
+    "answers": [
+      {
+        "answer": "Diarrhea"
+      },
+      {
+        "answer": "Conjunctival congestion"
+      },
+      {
+        "answer": "Headache"
+      },
+      {
+        "answer": "Sputum production"
+      },
+      {
+        "answer": "Fatigue"
+      },
+      {
+        "answer": "Hemoptysis"
+      },
+      {
+        "answer": "Nausea or vomiting"
+      },
+      {
+        "answer": "Myalgia or arthralgia"
+      },
+      {
+        "answer": "Chills"
+      },
+      {
+        "answer": "Throat congestion"
+      },
+      {
+        "answer": "Tonsil swelling"
+      },
+      {
+        "answer": "Enlargement of lymph nodes"
+      },
+      {
+        "answer": "Rash"
+      },
+      {
+        "answer": "Fever above 38 Celcius (100.5F)"
+      },
+      {
+        "answer": "Difficulty breathing"
+      },
+      {
+        "answer": "Sore throat"
+      },
+      {
+        "answer": "Lack of smell"
+      },
+      {
+        "answer": "Lack of taste"
+      },
+      {
+        "answer": "Dry cough"
+      },
+      {
+        "answer": "Dry mouth"
+      },
+      {
+        "answer": "Other (please specify)"
+      }
+    ]
+  },
+  {
+    "question": "Do you have any preexisting conditions?",
+    "answers": [
+      {
+        "answer": "COPD"
+      },
+      {
+        "answer": "Diabetes"
+      },
+      {
+        "answer": "Hypertension"
+      },
+      {
+        "answer": "Coronary Heart Disease"
+      },
+      {
+        "answer": "Cerebrovascular Disease"
+      },
+      {
+        "answer": "Hepatitis B"
+      },
+      {
+        "answer": "Cancer"
+      },
+      {
+        "answer": "Chronic Renal Disease"
+      },
+      {
+        "answer": "Immunodeficiency"
+      },
+      {
+        "answer": "Other (please specify)"
+      }
+    ]
+  },
+  {
+    "question": "Are you a smoker?",
+    "answers": [
+      {
+        "answer": "Yes, daily"
+      },
+      {
+        "answer": "Yes, occasionally"
+      },
+      {
+        "answer": "No"
+      }
+    ]
+  }
+]
