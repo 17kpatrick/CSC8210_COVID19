@@ -11,4 +11,11 @@ class ExaminationController {
         def examinationQuestionSet = ExaminationQuestionSet.getInstance().getQuestionSet()
         render examinationQuestionSet as JSON
     }
+
+    def getSimilarities(){
+        def patientSymptoms = params?.symptoms?.split(',')
+        def symptomComparisonCalculator = new SymptomComparisonCalculator(params.illness, patientSymptoms)
+        def map =[message: "test"]
+        render map as JSON
+    }
 }
