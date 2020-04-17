@@ -2,6 +2,8 @@ package csc8510.covid19
 
 class HealthProviderPromptAnswer {
     def answer
+    def answerGroup
+    def answerId
     def riskScore
 
     HealthProviderPromptAnswer(answer, riskScore) {

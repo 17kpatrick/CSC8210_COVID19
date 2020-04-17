@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 
-export default class MultipleChoiceQuestion extends Component {
+export default class MultipleChoiceCheckboxQuestion extends Component {
     render() {
-        //TODO need to add id's to questions in JSON
         return [
             <div>
                 <div>{this.props.question}</div>
                 {this.props.answers.map(answer => {
                     return <div>
                         <div>{answer.answer}</div>
-                        <input type='radio' value={answer} /><br /></div>
+                        <input type='checkbox' id={answer.id} name={answer.answerGroup} value={answer} /><br /></div>
                 })}
             </div>
         ]

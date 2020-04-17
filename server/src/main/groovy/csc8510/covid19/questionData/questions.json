@@ -9,16 +9,22 @@
     "question": "What is your legal sex?",
     "answers": [
       {
-        "answer": "Male"
+        "answer": "Male",
+        "answerGroup": "legalSex",
+        "answerId": "legalSex-A"
       },
       {
-        "answer": "Female"
+        "answer": "Female",
+        "answerGroup": "legalSex",
+        "answerId": "legalSex-B"
       },
       {
-        "answer": "Other"
+        "answer": "Other",
+        "answerGroup": "legalSex",
+        "answerId": "legalSex-C"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_RADIO",
     "id": 2
   },
   {
@@ -31,155 +37,235 @@
     "question": "Do you have exposure to the public as part of your profession or daily routine?",
     "answers": [
       {
-        "answer": "Yes, daily"
+        "answer": "Yes, daily",
+        "answerGroup": "exposure",
+        "answerId": "exposure-A"
       },
       {
-        "answer": "Yes, occasionally"
+        "answer": "Yes, occasionally",
+        "answerGroup": "exposure",
+        "answerId": "exposure-B"
       },
       {
-        "answer": "No"
+        "answer": "No",
+        "answerGroup": "exposure",
+        "answerId": "exposure-C"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_RADIO",
     "id": 4
   },
   {
     "question": "Have you been in contact with anyone infected with COVID-19?",
     "answers": [
       {
-        "answer": "Yes"
+        "answer": "Yes",
+        "answerGroup": "contact",
+        "answerId": "contact-A"
       },
       {
-        "answer": "No"
+        "answer": "No",
+        "answerGroup": "contact",
+        "answerId": "contact-B"
       },
       {
-        "answer": "Unknown"
+        "answer": "Unknown",
+        "answerGroup": "contact",
+        "answerId": "contact-C"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_RADIO",
     "id": 5
   },
   {
     "question": "What symptoms have you experienced?",
     "answers": [
       {
-        "answer": "Diarrhea"
+        "answer": "Diarrhea",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-A"
       },
       {
-        "answer": "Conjunctival congestion"
+        "answer": "Conjunctival congestion",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-B"
       },
       {
-        "answer": "Headache"
+        "answer": "Headache",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-C"
       },
       {
-        "answer": "Sputum production"
+        "answer": "Sputum production",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-D"
       },
       {
-        "answer": "Fatigue"
+        "answer": "Fatigue",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-E"
       },
       {
-        "answer": "Hemoptysis"
+        "answer": "Hemoptysis",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-F"
       },
       {
-        "answer": "Nausea or vomiting"
+        "answer": "Nausea or vomiting",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-G"
       },
       {
-        "answer": "Myalgia or arthralgia"
+        "answer": "Myalgia or arthralgia",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-H"
       },
       {
-        "answer": "Chills"
+        "answer": "Chills",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-I"
       },
       {
-        "answer": "Throat congestion"
+        "answer": "Throat congestion",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-J"
       },
       {
-        "answer": "Tonsil swelling"
+        "answer": "Tonsil swelling",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-K"
       },
       {
-        "answer": "Enlargement of lymph nodes"
+        "answer": "Enlargement of lymph nodes",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-L"
       },
       {
-        "answer": "Rash"
+        "answer": "Rash",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-M"
       },
       {
-        "answer": "Fever above 38 Celcius (100.5F)"
+        "answer": "Fever above 38 Celcius (100.5F)",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-N"
       },
       {
-        "answer": "Difficulty breathing"
+        "answer": "Difficulty breathing",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-O"
       },
       {
-        "answer": "Sore throat"
+        "answer": "Sore throat",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-P"
       },
       {
-        "answer": "Lack of smell"
+        "answer": "Lack of smell",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-Q"
       },
       {
-        "answer": "Lack of taste"
+        "answer": "Lack of taste",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-R"
       },
       {
-        "answer": "Dry cough"
+        "answer": "Dry cough",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-S"
       },
       {
-        "answer": "Dry mouth"
+        "answer": "Dry mouth",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-T"
       },
       {
-        "answer": "Other (please specify)"
+        "answer": "Other (please specify)",
+        "answerGroup": "symptoms",
+        "answerId": "symptoms-U"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_CHECKBOX",
     "id": 6
   },
   {
     "question": "Do you have any preexisting conditions?",
     "answers": [
       {
-        "answer": "COPD"
+        "answer": "COPD",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-A"
       },
       {
-        "answer": "Diabetes"
+        "answer": "Diabetes",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-B"
       },
       {
-        "answer": "Hypertension"
+        "answer": "Hypertension",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-C"
       },
       {
-        "answer": "Coronary Heart Disease"
+        "answer": "Coronary Heart Disease",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-D"
       },
       {
-        "answer": "Cerebrovascular Disease"
+        "answer": "Cerebrovascular Disease",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-E"
       },
       {
-        "answer": "Hepatitis B"
+        "answer": "Hepatitis B",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-F"
       },
       {
-        "answer": "Cancer"
+        "answer": "Cancer",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-G"
       },
       {
-        "answer": "Chronic Renal Disease"
+        "answer": "Chronic Renal Disease",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-H"
       },
       {
-        "answer": "Immunodeficiency"
+        "answer": "Immunodeficiency",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-I"
       },
       {
-        "answer": "Other (please specify)"
+        "answer": "Other (please specify)",
+        "answerGroup": "preexistingConditions",
+        "answerId": "preexistingConditions-J"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_CHECKBOX",
     "id": 7
   },
   {
     "question": "Are you a smoker?",
     "answers": [
       {
-        "answer": "Yes, daily"
+        "answer": "Yes, daily",
+        "answerGroup": "smoker",
+        "answerId": "smoker-A"
       },
       {
-        "answer": "Yes, occasionally"
+        "answer": "Yes, occasionally",
+        "answerGroup": "smoker",
+        "answerId": "smoker-B"
       },
       {
-        "answer": "No"
+        "answer": "No",
+        "answerGroup": "smoker",
+        "answerId": "smoker-C"
       }
     ],
-    "questionType": "MULTIPLE_CHOICE",
+    "questionType": "MULTIPLE_CHOICE_RADIO",
     "id": 8
   }
 ]
