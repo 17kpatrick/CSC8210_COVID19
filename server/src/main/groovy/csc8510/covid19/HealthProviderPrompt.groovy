@@ -3,6 +3,8 @@ package csc8510.covid19
 class HealthProviderPrompt {
     def question
     HealthProviderPromptAnswer[] answers
+    def questionType
+    def id
 
     HealthProviderPrompt(question, answers) {
         this.question = question

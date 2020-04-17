@@ -1,7 +1,9 @@
 [
   {
     "question": "When did your symptoms begin?",
-    "answers": []
+    "answers": [],
+    "questionType": "OPEN_ENDED",
+    "id": 1
   },
   {
     "question": "What is your legal sex?",
@@ -15,11 +17,15 @@
       {
         "answer": "Other"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 2
   },
   {
     "question": "What is your age?",
-    "answers": []
+    "answers": [],
+    "questionType": "OPEN_ENDED",
+    "id": 3
   },
   {
     "question": "Do you have exposure to the public as part of your profession or daily routine?",
@@ -33,7 +39,9 @@
       {
         "answer": "No"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 4
   },
   {
     "question": "Have you been in contact with anyone infected with COVID-19?",
@@ -47,7 +55,9 @@
       {
         "answer": "Unknown"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 5
   },
   {
     "question": "What symptoms have you experienced?",
@@ -115,7 +125,9 @@
       {
         "answer": "Other (please specify)"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 6
   },
   {
     "question": "Do you have any preexisting conditions?",
@@ -150,7 +162,9 @@
       {
         "answer": "Other (please specify)"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 7
   },
   {
     "question": "Are you a smoker?",
@@ -164,6 +178,8 @@
       {
         "answer": "No"
       }
-    ]
+    ],
+    "questionType": "MULTIPLE_CHOICE",
+    "id": 8
   }
 ]
