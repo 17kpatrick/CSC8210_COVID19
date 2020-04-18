@@ -15,7 +15,8 @@ class App extends Component {
             react: REACT_VERSION
         },
         collapse: false,
-        similaritiesBetweenPatientAndOtherCases: null
+        similaritiesBetweenPatientAndOtherCases: null,
+        checkboxResults: {}
     };
 
     toggle = () => {
@@ -27,6 +28,14 @@ class App extends Component {
             .then(r => r.json())
             .then(json => this.setState({similaritiesBetweenPatientAndOtherCases: json.message}))
             .catch(error => console.error('Error connecting to server: ' + error));
+    };
+
+    buildAndSubmitGetRequest = () => {
+        let symptoms;
+        if (this.state.checkboxResults['symptoms']){
+            symptoms = this.state.checkboxResults['symptoms'].join(',');
+            this.getSimilaritiesBetweenPatientAndOtherCases('COVID19', symptoms)
+        }
     };
 
 
@@ -47,14 +56,14 @@ class App extends Component {
                         case "MULTIPLE_CHOICE_RADIO":
                             return <div><MultipleChoiceRadioQuestion question={question.question} answers={question.answers} /><br/></div>;
                         case "MULTIPLE_CHOICE_CHECKBOX":
-                            return <div><MultipleChoiceCheckboxQuestion question={question.question} answers={question.answers} /><br/></div>;
+                            return <div><MultipleChoiceCheckboxQuestion question={question.question} answers={question.answers} checkboxResults={this.state.checkboxResults} /><br/></div>;
                         case "OPEN_ENDED":
                             return <div><OpenEndedQuestion question={question.question} /><br/></div>;
                         default:
                             return <div>No questions were found, please contact the administrator.</div>
                     }
                 })}
-                <button type='submit' onClick={() => this.getSimilaritiesBetweenPatientAndOtherCases('COVID19', 'test1,test2,test3')}>Submit</button>
+                <button type='submit' onClick={() => this.buildAndSubmitGetRequest()}>Submit</button>
                 <div>{this.state.similaritiesBetweenPatientAndOtherCases}</div>
             </div>
         ];

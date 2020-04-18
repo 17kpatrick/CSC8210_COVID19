@@ -8,7 +8,7 @@ export default class MultipleChoiceRadioQuestion extends Component {
                 {this.props.answers.map(answer => {
                     return <div>
                         <div>{answer.answer}</div>
-                        <input type='radio' id={answer.id} name={answer.answerGroup} value={answer} /><br /></div>
+                        <input type='radio' id={answer.id} name={answer.answerGroup} value={answer.answer} /><br /></div>
                 })}
             </div>
         ]
