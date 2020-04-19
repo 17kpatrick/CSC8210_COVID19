@@ -10,9 +10,9 @@ class SymptomComparisonCalculator {
         this.patientSymptoms = patientSymptoms
     }
 
-    def getSymptomSimilarities(){
+    def getSymptomSimilarities() {
         def symptomStatisticChecker
-        switch (illness.toUpperCase()){
+        switch (illness.toUpperCase()) {
             case "COVID19":
                 symptomStatisticChecker = new Covid19SymptomStatisticChecker()
                 break
@@ -20,6 +20,18 @@ class SymptomComparisonCalculator {
                 symptomStatisticChecker = new SymptomStatisticChecker()
                 break
         }
+
+        def symptomMap = symptomStatisticChecker.getStatistics()
+
+        def returnedMap = [:]
+        patientSymptoms.each { symptom ->
+            def foundSymptomVal = symptomMap.find { it.key.trim().toLowerCase() == symptom.trim().toLowerCase() }?.value
+
+            if (foundSymptomVal != null) {
+                returnedMap[symptom] = foundSymptomVal
+            }
+        }
+        return returnedMap
     }
 
     def getIllness() {
