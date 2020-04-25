@@ -1,0 +1,17 @@
+{
+  "firstName": "Kyle",
+  "lastName": "Patrick",
+  "age": 24,
+  "gender": "M",
+  "quantity": 1,
+  "symptoms": [
+    {
+      "name": "Fever",
+      "weight": 1
+    },
+    {
+      "name": "Chills",
+      "weight": 1
+    }
+  ]
+}

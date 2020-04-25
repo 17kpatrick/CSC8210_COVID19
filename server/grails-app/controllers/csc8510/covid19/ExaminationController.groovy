@@ -19,4 +19,45 @@ class ExaminationController {
 
         render returnedMap as JSON
     }
+
+    def addPatient() {
+        try {
+            def json = request.JSON
+            def patientId = savePatientAndReturnIdOnSuccess(json)
+            savePatientSymptoms(json, patientId)
+
+            def successJson = [message: "Success"]
+            render successJson as JSON
+        }
+        catch (Exception e) {
+            println(e.getStackTrace())
+            def failureJson = [message: "Failure: " + e.getMessage()]
+            render failureJson as JSON
+        }
+    }
+
+    private static def savePatientAndReturnIdOnSuccess(json) {
+        Patient patient = new Patient()
+        patient.firstName = json.firstName
+        patient.lastName = json.lastName
+        patient.age = json.age
+        patient.gender = json.gender
+        patient.quantity = json.quantity
+        patient.save()
+        return patient.id
+    }
+
+    private static def savePatientSymptoms(json, patientId) {
+        json.symptoms.each { symptom ->
+            //We only want to add this patient's symptoms if they exist in the Symptoms table.
+            if (Symptom.findByName(symptom.name)) {
+                def symptomId = Symptom.findByName(symptom.name).id
+                PatientSymptom patientSymptom = new PatientSymptom()
+                patientSymptom.patientId = patientId
+                patientSymptom.symptomId = symptomId
+                patientSymptom.symptomWeight = symptom.weight
+                patientSymptom.save()
+            }
+        }
+    }
 }
