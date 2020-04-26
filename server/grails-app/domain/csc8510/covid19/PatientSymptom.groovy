@@ -13,8 +13,8 @@ class PatientSymptom implements Serializable {
 
     static mapping = {
         table 'PATIENT_SYMPTOMS'
-        id composite: ['patientId', 'symptomId']
         version false
+        id column: 'PATIENT_SYMPTOMS_ID'
         patientId column: 'PATIENT_ID'
         symptomId column: 'SYMPTOM_ID'
         symptomWeight column: 'SYMPTOM_WEIGHT'
