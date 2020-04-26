@@ -1,6 +1,8 @@
 package csc8510.covid19
+import grails.rest.Resource
 
-class PatientSymptom {
+@Resource(uri='/patientSymptom', readOnly=true)
+class PatientSymptom implements Serializable {
 
     Long patientId
     Long symptomId
@@ -11,7 +13,7 @@ class PatientSymptom {
 
     static mapping = {
         table 'PATIENT_SYMPTOMS'
-        id false
+        id composite: ['patientId', 'symptomId']
         version false
         patientId column: 'PATIENT_ID'
         symptomId column: 'SYMPTOM_ID'

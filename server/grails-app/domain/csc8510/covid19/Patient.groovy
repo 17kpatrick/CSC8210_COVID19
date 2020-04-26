@@ -1,5 +1,8 @@
 package csc8510.covid19
 
+import grails.rest.Resource
+
+@Resource(uri='/patient', readOnly=true)
 class Patient {
     String firstName
     String lastName
