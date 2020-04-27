@@ -46,6 +46,30 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     }
 
+    def getRiskScore(allSymptoms, patientSymptoms) {
+
+        def returnedMap = [:]
+        returnedMap["maxPossibleSymptomScore"] = 0.0
+        returnedMap["yourPatientSymptomScore"] = 0.0
+        returnedMap["yourPatientSymptomsList"] = [:]
+
+        allSymptoms.each {
+            returnedMap["maxPossibleSymptomScore"] += it.value
+        }
+        patientSymptoms.each { symptom ->
+            def foundSymptomVal = allSymptoms.find { it.key.trim().toLowerCase() == symptom.trim().toLowerCase() }?.value
+
+            if (foundSymptomVal != null) {
+                returnedMap["yourPatientSymptomsList"][symptom] = foundSymptomVal
+                returnedMap["yourPatientSymptomScore"] += foundSymptomVal
+            }
+        }
+
+        returnedMap["finalRiskScore"] = returnedMap["yourPatientSymptomScore"] / returnedMap["maxPossibleSymptomScore"]
+
+        return returnedMap
+    }
+
     @Override
     def getStatistics() {
         return symptomMap

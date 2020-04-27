@@ -14,6 +14,7 @@ class UrlMappings {
 
         //http://localhost:8080/examination/getPatientSimilarities?illness=COVID19&symptoms=symptom1,symptom2,symptom3
         get "/examination/getPatientSimilarities?${illness}?&?${symptoms}?"(controller: 'examination', action: 'getSimilarities')
+        get "/examination/getPatientRiskScore?${illness}?&?${symptoms}?"(controller: 'examination', action: 'getRiskScore')
 
         //http://localhost:8080/examination/addPatient - See exampleAddPatientJson.json for example of JSON body that must be included in request.
         post "/examination/addPatient" (controller: 'examination', action: 'addPatient', parseRequest: true)

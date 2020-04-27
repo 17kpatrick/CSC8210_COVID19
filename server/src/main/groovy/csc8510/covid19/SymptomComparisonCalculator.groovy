@@ -10,6 +10,20 @@ class SymptomComparisonCalculator {
         this.patientSymptoms = patientSymptoms
     }
 
+    def getRiskScore(allSymptoms) {
+        def symptomStatisticChecker
+        switch (illness.toUpperCase()) {
+            case "COVID19":
+                symptomStatisticChecker = new Covid19SymptomStatisticChecker()
+                break
+            default:
+                symptomStatisticChecker = new SymptomStatisticChecker()
+                break
+        }
+
+        return symptomStatisticChecker.getRiskScore(allSymptoms, patientSymptoms);
+    }
+
     def getSymptomSimilarities() {
         def symptomStatisticChecker
         switch (illness.toUpperCase()) {
