@@ -3,8 +3,10 @@ package csc8510.covid19
 import com.opencsv.CSVReader
 import com.opencsv.CSVWriter
 
-import com.xlson.groovycsv.CsvParser
-import com.xlson.groovycsv.CsvIterator
+import org.knowm.xchart.RadarChart
+import org.knowm.xchart.RadarChartBuilder
+import org.knowm.xchart.BitmapEncoder
+import org.knowm.xchart.BitmapEncoder.BitmapFormat
 
 class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
@@ -46,7 +48,20 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     }
 
+    private def generateRadarChart(symptoms, weights) {
+
+        RadarChart chart = new RadarChartBuilder().width(1000).height(800).title("COVID-19 Symptoms Radar Chart").build();
+        chart.setVariableLabels(symptoms)
+
+        chart.addSeries("All Patient Data", weights);
+
+        BitmapEncoder.saveBitmap(chart, "./allPatientSymptoms", BitmapFormat.JPG)
+    }
+
     def getRiskScore(allSymptoms, patientSymptoms) {
+
+        def symps = []
+        def props = []
 
         def returnedMap = [:]
         returnedMap["maxPossibleSymptomScore"] = 0.0
@@ -55,6 +70,8 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
         allSymptoms.each {
             returnedMap["maxPossibleSymptomScore"] += it.value
+            symps.add(it.key)
+            props.add(it.value)
         }
         patientSymptoms.each { symptom ->
             def foundSymptomVal = allSymptoms.find { it.key.trim().toLowerCase() == symptom.trim().toLowerCase() }?.value
@@ -66,6 +83,8 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
         }
 
         returnedMap["finalRiskScore"] = returnedMap["yourPatientSymptomScore"] / returnedMap["maxPossibleSymptomScore"]
+
+        this.generateRadarChart(symps as String[], props as double[])
 
         return returnedMap
     }
