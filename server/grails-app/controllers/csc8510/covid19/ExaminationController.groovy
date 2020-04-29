@@ -42,8 +42,9 @@ class ExaminationController {
     def addPatient() {
         try {
             def json = request.JSON
-            def patientId = savePatientAndReturnIdOnSuccess(json)
-            savePatientSymptoms(json, patientId)
+            def patientData = json ? json : params
+            def patientId = savePatientAndReturnIdOnSuccess(patientData)
+            savePatientSymptoms(patientData, patientId)
 
             def successJson = [message: "Success"]
             render successJson as JSON
@@ -55,27 +56,35 @@ class ExaminationController {
         }
     }
 
-    private static def savePatientAndReturnIdOnSuccess(json) {
+    private static def savePatientAndReturnIdOnSuccess(params) {
         Patient patient = new Patient()
-        patient.firstName = json.firstName
-        patient.lastName = json.lastName
-        patient.age = json.age
-        patient.gender = json.gender
-        patient.quantity = json.quantity
+        patient.firstName = params.firstName
+        patient.lastName = params.lastName
+        patient.age = Integer.valueOf(params.age)
+        patient.gender = params.gender
+        patient.quantity = params.quantity ? params.quantity : 1
         patient.save()
         return patient.id
     }
 
-    private static def savePatientSymptoms(json, patientId) {
-        json.symptoms.each { symptom ->
-            //We only want to add this patient's symptoms if they exist in the Symptoms table.
-            if (Symptom.findByName(symptom.name)) {
-                def symptomId = Symptom.findByName(symptom.name).id
-                PatientSymptom patientSymptom = new PatientSymptom()
-                patientSymptom.patientId = patientId
-                patientSymptom.symptomId = symptomId
-                patientSymptom.symptomWeight = symptom.weight
-                patientSymptom.save()
+    private static void saveSymptom(symptom, patientId) {
+        //We only want to add this patient's symptoms if they exist in the Symptoms table.
+        if (Symptom.findByName(symptom instanceof String ? symptom : symptom.name)) {
+            def symptomId = Symptom.findByName(symptom instanceof String ? symptom : symptom.name).id
+            PatientSymptom patientSymptom = new PatientSymptom()
+            patientSymptom.patientId = patientId
+            patientSymptom.symptomId = symptomId
+            patientSymptom.symptomWeight = symptom instanceof String ? 1 : symptom.weight
+            patientSymptom.save()
+        }
+    }
+
+    private static def savePatientSymptoms(params, patientId) {
+        if (params.symptoms instanceof String) {
+            saveSymptom(params.symptoms, patientId)
+        } else {
+            params.symptoms.each { symptom ->
+                saveSymptom(symptom, patientId)
             }
         }
     }
