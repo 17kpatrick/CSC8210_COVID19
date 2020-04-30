@@ -39,17 +39,25 @@ class App extends Component {
             <Router>
                 <div>
                     <nav>
-                        <ul>
-                            <li>
-                                <Link to="/addPatient">Add Patient</Link>
-                            </li>
-                            <li>
-                                <Link to="/getPatientRisk">Get Patient Risk Score</Link>
-                            </li>
-                            <li>
-                                <Link to="/analytics">Get Patient Analytics</Link>
-                            </li>
-                        </ul>
+                      <table>
+                        <tr>
+                          <td>
+                            <div className="nav-button">
+                            <Link to="/addPatient">Add Patient</Link>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="nav-button">
+                            <Link to="/getPatientRisk">Get Patient Risk Score</Link>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="nav-button">
+                            <Link to="/analytics">Get Patient Analytics</Link>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
                     </nav>
 
                     {/* A <Switch> looks through its children <Route>s and

@@ -1,0 +1,23 @@
+input{
+  margin: 10px;
+}
+
+table{
+  width: 100%;
+}
+
+
+td{
+  text-align: center;
+  width: 33%;
+}
+
+td a {
+  font-size: 30px;
+  color: black;
+}
+
+.nav-button{
+  background-color: #f4524f;
+  border: solid #460600 2px;
+}
