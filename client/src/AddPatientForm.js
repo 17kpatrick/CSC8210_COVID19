@@ -42,10 +42,16 @@ export default class AddPatientForm extends Component {
         };
 
         fetch(SERVER_URL + '/examination/addPatient', requestOptions)
-            .then(r => r.json())
-            .then(json => this.setState({response: json}))
-            .catch(error => console.error('Error connecting to server: ' + error));
-        
+            .then(response =>{
+                alert("Your patient has been saved successfully.");
+                this.props.history.push('/');
+                event.preventDefault();
+            })
+            .catch(error =>{
+                console.error('Error connecting to server: ' + error);
+                event.preventDefault();
+            });
+
         event.preventDefault();
     };
 
@@ -53,7 +59,7 @@ export default class AddPatientForm extends Component {
     render() {
         return (
             <div>
-                <form action={SERVER_URL + '/examination/addPatient'} method='POST' onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="firstName">First Name</label><input type='text' name='firstName' id='firstName' />
                     <label htmlFor="lastName">Last Name</label><input type='text' name='lastName' id='lastName' />
                     <label htmlFor="age">Age</label><input type='number' name='age' id='age' />
