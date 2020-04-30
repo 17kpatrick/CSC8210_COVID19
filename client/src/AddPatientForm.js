@@ -42,13 +42,19 @@ export default class AddPatientForm extends Component {
         };
 
         fetch(SERVER_URL + '/examination/addPatient', requestOptions)
-            .then(response =>{
-                alert("Your patient has been saved successfully.");
-                this.props.history.push('/');
-                event.preventDefault();
+            .then(r => r.json())
+            .then(json =>{
+                if (json.message !== "Success"){
+                  throw Error("The patient was not saved successfully. Please try again.")
+                }
+                else{
+                  alert("Your patient has been saved successfully.");
+                  this.props.history.push('/');
+                  event.preventDefault();
+                }
             })
             .catch(error =>{
-                console.error('Error connecting to server: ' + error);
+                alert(error)
                 event.preventDefault();
             });
 
