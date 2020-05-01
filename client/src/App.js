@@ -6,7 +6,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    NavLink
 } from "react-router-dom";
 import GetPatientRiskScore from "./GetPatientRiskScore";
 import Analytics from "./Analytics";
@@ -43,17 +44,17 @@ class App extends Component {
                         <tr>
                           <td>
                             <div className="nav-button">
-                            <Link to="/addPatient">Add Patient</Link>
+                            <NavLink activeClassName='is-active' to="/addPatient">Add Patient</NavLink>
                             </div>
                           </td>
                           <td>
                             <div className="nav-button">
-                            <Link to="/getPatientRisk">Get Patient Risk Score</Link>
+                            <NavLink activeClassName='is-active' to="/getPatientRisk">Get Patient Risk Score</NavLink>
                             </div>
                           </td>
                           <td>
                             <div className="nav-button">
-                            <Link to="/analytics">Get Patient Analytics</Link>
+                            <NavLink activeClassName='is-active' to="/analytics">Get Patient Analytics</NavLink>
                             </div>
                           </td>
                         </tr>

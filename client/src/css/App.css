@@ -2,17 +2,17 @@ input{
   margin: 10px;
 }
 
-table{
+nav table{
   width: 100%;
 }
 
 
-td{
+nav td{
   text-align: center;
   width: 33%;
 }
 
-td a {
+nav td a {
   font-size: 30px;
   color: black;
 }
@@ -20,4 +20,27 @@ td a {
 .nav-button{
   background-color: #f4524f;
   border: solid #460600 2px;
+}
+
+.is-active{
+  color: white;
+}
+
+.riskTable, .symptomsTable table, th, td {
+  border: 1px solid black;
+  font-size: 25px;
+}
+
+.riskTable, .symptomsTable{
+  margin-bottom: 25px;
+}
+
+.riskScoreContainer{
+  position: relative;
+  margin: 0 auto;
+  top: 35px;
+}
+
+.reset-button{
+  font-size: 25px;
 }

@@ -66,7 +66,7 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
         def returnedMap = [:]
         returnedMap["maxPossibleSymptomScore"] = 0.0
         returnedMap["yourPatientSymptomScore"] = 0.0
-        returnedMap["yourPatientSymptomsList"] = [:]
+        returnedMap["yourPatientSymptomsList"] = []
 
         allSymptoms.each {
             returnedMap["maxPossibleSymptomScore"] += it.value
@@ -77,7 +77,7 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
             def foundSymptomVal = allSymptoms.find { it.key.trim().toLowerCase() == symptom.trim().toLowerCase() }?.value
 
             if (foundSymptomVal != null) {
-                returnedMap["yourPatientSymptomsList"][symptom] = foundSymptomVal
+                returnedMap["yourPatientSymptomsList"] << [(symptom): foundSymptomVal]
                 returnedMap["yourPatientSymptomScore"] += foundSymptomVal
             }
         }

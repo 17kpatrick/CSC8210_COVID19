@@ -23,20 +23,26 @@ class ExaminationController {
     }
 
     def getRiskScore() {
+        try{
+            def sql = new Sql(dataSource)
+            def sqlStr = "SELECT SYMPTOM_NAME, (SUM(SYMPTOM_WEIGHT) * 1.0) / (SELECT SUM(QUANTITY) FROM PATIENT) AS 'PROPORTION' FROM PATIENT_SYMPTOMS NATURAL JOIN SYMPTOMS GROUP BY SYMPTOM_ID"
+            def list = sql.rows(sqlStr)
+            def allSymptomsMap = [:]
+            list.each {
+                allSymptomsMap[it.SYMPTOM_NAME] = it.PROPORTION
+            }
+            def patientSymptoms = params?.symptoms?.split(',')
 
-        def sql = new Sql(dataSource)
-        def sqlStr = "SELECT SYMPTOM_NAME, (SUM(SYMPTOM_WEIGHT) * 1.0) / (SELECT SUM(QUANTITY) FROM PATIENT) AS 'PROPORTION' FROM PATIENT_SYMPTOMS NATURAL JOIN SYMPTOMS GROUP BY SYMPTOM_ID"
-        def list = sql.rows(sqlStr)
-        def allSymptomsMap = [:]
-        list.each {
-            allSymptomsMap[it.SYMPTOM_NAME] = it.PROPORTION
+            def symptomComparisonCalculator = new SymptomComparisonCalculator(params.illness, patientSymptoms)
+            def returnedMap = symptomComparisonCalculator.getRiskScore(allSymptomsMap)
+
+            render returnedMap as JSON
         }
-        def patientSymptoms = params?.symptoms?.split(',')
-
-        def symptomComparisonCalculator = new SymptomComparisonCalculator(params.illness, patientSymptoms)
-        def returnedMap = symptomComparisonCalculator.getRiskScore(allSymptomsMap)
-
-        render returnedMap as JSON
+        catch (Exception e){
+            println(e.getStackTrace())
+            def failureJson = [message: "Failure: " + e.getMessage()]
+            render failureJson as JSON
+        }
     }
 
     def addPatient() {
