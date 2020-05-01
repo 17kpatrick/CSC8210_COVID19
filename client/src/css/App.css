@@ -19,6 +19,7 @@ nav table{
 nav td{
   text-align: center;
   width: 33%;
+    border: none;
 }
 
 nav td a {
@@ -28,6 +29,15 @@ nav td a {
 
 .nav-button{
   background-color: #33b5e5 ;
+}
+
+.nav-button a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-button a{
+    font-family: Heebo;
 }
 
 .is-active{
