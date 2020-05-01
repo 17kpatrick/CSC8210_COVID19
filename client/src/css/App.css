@@ -8,6 +8,7 @@ input{
   left: 0;
   right: 0;
   height: 50px;
+  z-index: 2;
 }
 
 nav table{
@@ -47,7 +48,7 @@ nav td a {
   position: relative;
   margin: 0 auto;
   top: 55px;
-  z-index: -1;
+  z-index: 1;
 }
 
 .reset-button{
@@ -57,5 +58,9 @@ nav td a {
 .add-patient-container{
   position: relative;
   top: 55px;
-  z-index: -1;
+  z-index: 1;
+}
+
+h1{
+  text-align: center;
 }
