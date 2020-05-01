@@ -128,7 +128,7 @@ export default class GetPatientRiskScore extends Component {
                                     return Object.keys(symptom).map((key, value) => {
                                         return <tr>
                                             <td>{key}</td>
-                                            <td>{symptom[key]}</td>
+                                            <td>{symptom[key].toFixed(2)}</td>
                                         </tr>
                                     })
                                 })
@@ -147,9 +147,9 @@ export default class GetPatientRiskScore extends Component {
                             </thead>
                             <tbody>
                             <tr>
-                                <td>{this.state.response.maxPossibleSymptomScore}</td>
-                                <td>{this.state.response.yourPatientSymptomScore}</td>
-                                <td>{this.state.response.finalRiskScore}</td>
+                                <td>{this.state.response.maxPossibleSymptomScore.toFixed(2)}</td>
+                                <td>{this.state.response.yourPatientSymptomScore.toFixed(2)}</td>
+                                <td>{this.state.response.finalRiskScore.toFixed(3)}</td>
                             </tr>
                             </tbody>
                         </table>
