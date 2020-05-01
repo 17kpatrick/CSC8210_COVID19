@@ -39,7 +39,7 @@ class App extends Component {
         return [
             <Router>
                 <div>
-                    <nav>
+                    <nav className='nav-bar'>
                       <table>
                         <tr>
                           <td>

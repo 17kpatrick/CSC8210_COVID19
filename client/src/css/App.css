@@ -2,6 +2,14 @@ input{
   margin: 10px;
 }
 
+.nav-bar{
+  position: fixed;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 50px;
+}
+
 nav table{
   width: 100%;
 }
@@ -18,7 +26,7 @@ nav td a {
 }
 
 .nav-button{
-  background-color: #f4524f;
+  background-color: #f40310;
   border: solid #460600 2px;
 }
 
@@ -35,12 +43,19 @@ nav td a {
   margin-bottom: 25px;
 }
 
-.riskScoreContainer{
+.risk-score-container{
   position: relative;
   margin: 0 auto;
-  top: 35px;
+  top: 55px;
+  z-index: -1;
 }
 
 .reset-button{
   font-size: 25px;
+}
+
+.add-patient-container{
+  position: relative;
+  top: 55px;
+  z-index: -1;
 }

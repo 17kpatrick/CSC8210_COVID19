@@ -64,7 +64,7 @@ export default class AddPatientForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className='add-patient-container'>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="firstName">First Name</label><input type='text' name='firstName' id='firstName' />
                     <label htmlFor="lastName">Last Name</label><input type='text' name='lastName' id='lastName' />

@@ -59,7 +59,7 @@ export default class GetPatientRiskScore extends Component{
   render() {
     if (this.state.response === null){
       return (
-          <div>
+          <div className='risk-score-container'>
             <form onSubmit={this.handleSubmit}>
               <ul>
                 <li><label htmlFor='diarrhea'>Diarrhea</label><input id='diarrhea' type='checkbox' name='symptoms' value='Diarrhea' /></li>
@@ -90,7 +90,7 @@ export default class GetPatientRiskScore extends Component{
     }
     else{
       return (
-          <table className="riskScoreContainer">
+          <table className="risk-score-container">
             <tr>
             <table className="symptomsTable">
               <thead>
