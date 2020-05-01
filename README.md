@@ -14,6 +14,11 @@ GET '/examination/getPatientSimilarities' params: illness (i.e. COVID19), sympto
 the patient has separated by commas with no spaces.)
 EXAMPLE: http://localhost:8080/examination/getPatientSimilarities?illness=COVID19&symptoms=symptom1,symptom2,symptom3
 
+GET '/examination/getPatientRiskScore' params: illness (i.e. COVID19), symptoms (List the symptoms that
+the patient has separated by commas with no spaces.)
+EXAMPLE: http://localhost:8080/examination/getPatientRiskScore?illness=COVID19&symptoms=symptom1,symptom2,symptom3
+Retrieves patient risk score based on data in database.
+
 POST '/examination/addPatient' params: JSON in the following format:
 
 {
