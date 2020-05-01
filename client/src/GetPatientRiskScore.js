@@ -60,8 +60,8 @@ export default class GetPatientRiskScore extends Component {
     render() {
         if (this.state.response === null) {
             return (
-                <div className='risk-score-container'>
-                    <h3 className='page-header'>Select all of the symptoms that apply to your patient to calculate a risk score.</h3>
+                <div className='risk-score-container shadow-lg'>
+                    <div className='prompt'>Select all of the symptoms that apply to your patient to calculate a risk score.</div>
                     <hr/>
                     <form onSubmit={this.handleSubmit}>
                         <ul>
@@ -86,7 +86,7 @@ export default class GetPatientRiskScore extends Component {
                             <li><label htmlFor='dryCough'>Dry cough</label><input id='dryCough' type='checkbox' name='symptoms' value='Dry cough' /></li>
                             <li><label htmlFor='dryMouth'>Dry mouth</label><input id='dryMouth' type='checkbox' name='symptoms' value='Dry mouth' /></li>
                         </ul>
-                        <button type='submit'>Submit</button>
+                        <button className='submit-btn btn btn-primary' type='submit'>Submit</button>
                     </form>
                 </div>
             )
@@ -155,7 +155,7 @@ export default class GetPatientRiskScore extends Component {
                         </table>
                     </tr>
                     <tr>
-                        <button className='reset-button' onClick={() => this.setState({response: null})}>Get Another Risk Score</button>
+                        <button className='reset-button btn btn-primary' onClick={() => this.setState({response: null})}>Get Another Risk Score</button>
                     </tr>
                 </table>
             )

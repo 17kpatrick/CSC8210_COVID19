@@ -45,9 +45,11 @@ nav td a {
 
 .risk-score-container{
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto 15px;
   top: 55px;
   z-index: 1;
+    width: 95%;
+    height: 95%;
 }
 
 .reset-button{
@@ -58,6 +60,9 @@ nav td a {
   position: relative;
   top: 55px;
   z-index: 1;
+    width: 95%;
+    height: 95%;
+    margin: auto auto 15px;
 }
 
 .add-patient-input-container{
@@ -73,12 +78,15 @@ h1{
   text-align: center;
 }
 .prompt{
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 5px;
     font-size: 20px;
     width: 25%;
 }
-
-.page-header{
-    text-align: center;
+.submit-btn{
+    display: block;
+    width: 90%;
+    margin: 25px auto 0;
+    position: relative;
+    bottom: 15px;
 }

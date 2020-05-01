@@ -64,9 +64,9 @@ export default class AddPatientForm extends Component {
 
     render() {
         return (
-            <div className='add-patient-container'>
+            <div className='add-patient-container shadow-lg'>
                 <form onSubmit={this.handleSubmit}>
-                    <h3 className='page-header'>Please enter the data for the COVID-19 positive patient.</h3>
+                    <div className='prompt'>Please enter the data for your COVID-19 positive patient.</div>
                     <hr/>
                     <table className='add-patient-input-container'>
                         <tr>
@@ -92,7 +92,9 @@ export default class AddPatientForm extends Component {
                             <hr/>
                         </tr>
                     </table>
+                    <hr/>
                     <div className='prompt'>Select all of the symptoms which apply to your COVID-19 positive patient.</div>
+                    <hr/>
                     <ul>
                         <li><label htmlFor='diarrhea'>Diarrhea</label><input id='diarrhea' type='checkbox' name='symptoms' value='Diarrhea' /></li>
                         <li><label htmlFor='conjuctival'>Conjunctival congestion</label><input id='conjuctival' type='checkbox' name='symptoms' value='Conjunctival congestion' /></li>
@@ -115,7 +117,7 @@ export default class AddPatientForm extends Component {
                         <li><label htmlFor='dryCough'>Dry cough</label><input id='dryCough' type='checkbox' name='symptoms' value='Dry cough' /></li>
                         <li><label htmlFor='dryMouth'>Dry mouth</label><input id='dryMouth' type='checkbox' name='symptoms' value='Dry mouth' /></li>
                     </ul>
-                    <button type='submit'>Submit</button>
+                    <button className='submit-btn btn btn-primary' type='submit'>Submit</button>
                 </form>
             </div>
         );
