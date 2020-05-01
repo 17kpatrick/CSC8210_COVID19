@@ -61,6 +61,8 @@ export default class GetPatientRiskScore extends Component {
         if (this.state.response === null) {
             return (
                 <div className='risk-score-container'>
+                    <h3 className='page-header'>Select all of the symptoms that apply to your patient to calculate a risk score.</h3>
+                    <hr/>
                     <form onSubmit={this.handleSubmit}>
                         <ul>
                             <li><label htmlFor='diarrhea'>Diarrhea</label><input id='diarrhea' type='checkbox' name='symptoms' value='Diarrhea' /></li>

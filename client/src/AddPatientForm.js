@@ -18,18 +18,19 @@ export default class AddPatientForm extends Component {
         response: null
     };
 
+
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
     handleSubmit = (event) => {
         for (let i = 0; i < event.target.length; i++) {
             if ((event.target[i].outerHTML.indexOf('checkbox') !== -1 && event.target[i].checked) || event.target[i].outerHTML.indexOf('checkbox') === -1 && event.target[i].value) {
-                if (event.target[i].name === 'symptoms' ){
+                if (event.target[i].name === 'symptoms') {
                     this.state.patientData.symptoms.push(event.target[i].value)
-                }
-                else{
+                } else {
                     this.state.patientData[event.target[i].name] = event.target[i].value
                 }
             }
@@ -37,23 +38,22 @@ export default class AddPatientForm extends Component {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(this.state.patientData)
         };
 
         fetch(SERVER_URL + '/examination/addPatient', requestOptions)
             .then(r => r.json())
-            .then(json =>{
-                if (json.message !== "Success"){
-                  throw Error("The patient was not saved successfully. Please try again.")
-                }
-                else{
-                  alert("Your patient has been saved successfully.");
-                  this.props.history.push('/');
-                  event.preventDefault();
+            .then(json => {
+                if (json.message !== "Success") {
+                    throw Error("The patient was not saved successfully. Please try again.")
+                } else {
+                    alert("Your patient has been saved successfully.");
+                    this.props.history.push('/');
+                    event.preventDefault();
                 }
             })
-            .catch(error =>{
+            .catch(error => {
                 alert(error)
                 event.preventDefault();
             });
@@ -66,15 +66,33 @@ export default class AddPatientForm extends Component {
         return (
             <div className='add-patient-container'>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="firstName">First Name</label><input type='text' name='firstName' id='firstName' />
-                    <label htmlFor="lastName">Last Name</label><input type='text' name='lastName' id='lastName' />
-                    <label htmlFor="age">Age</label><input type='number' name='age' id='age' />
-                    <label htmlFor='gender'>What is your gender?</label><input type='text' list='genderList' id='gender' name='gender' />
-                    <datalist id='genderList'>
-                        <option value="Male" />
-                        <option value="Female" />
-                        <option value="Do Not Wish to Disclose" />
-                    </datalist>
+                    <h3 className='page-header'>Please enter the data for the COVID-19 positive patient.</h3>
+                    <hr/>
+                    <table className='add-patient-input-container'>
+                        <tr>
+                            <td><label htmlFor="firstName">First Name</label></td>
+                            <td><input type='text' name='firstName' id='firstName' /></td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="lastName">Last Name</label></td>
+                            <td><input type='text' name='lastName' id='lastName' /></td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor="age">Age</label></td>
+                            <td><input type='number' name='age' id='age' /></td>
+                        </tr>
+                        <tr>
+                            <td><label htmlFor='gender'>What is your gender?</label></td>
+                            <td><input type='text' list='genderList' id='gender' name='gender' /></td>
+                            <datalist id='genderList'>
+                                <option value="Male" />
+                                <option value="Female" />
+                                <option value="Do Not Wish to Disclose" />
+                            </datalist>
+                            <hr/>
+                        </tr>
+                    </table>
+                    <div className='prompt'>Select all of the symptoms which apply to your COVID-19 positive patient.</div>
                     <ul>
                         <li><label htmlFor='diarrhea'>Diarrhea</label><input id='diarrhea' type='checkbox' name='symptoms' value='Diarrhea' /></li>
                         <li><label htmlFor='conjuctival'>Conjunctival congestion</label><input id='conjuctival' type='checkbox' name='symptoms' value='Conjunctival congestion' /></li>
