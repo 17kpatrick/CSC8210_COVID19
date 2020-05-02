@@ -1,20 +1,21 @@
 package csc8510.covid19
 
 import com.opencsv.CSVReader
-import com.opencsv.CSVWriter
 
 import org.knowm.xchart.RadarChart
 import org.knowm.xchart.RadarChartBuilder
 import org.knowm.xchart.BitmapEncoder
 import org.knowm.xchart.BitmapEncoder.BitmapFormat
+import org.knowm.xchart.style.Styler.LegendPosition
 
 class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     private def symptomMap = [:]
+    private final def chartWidth = 900
+    private final def chartHeight = 900
 
     Covid19SymptomStatisticChecker() {
         this.readStatisticsFile()
-
     }
 
     private def readStatisticsFile() {
@@ -48,45 +49,76 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     }
 
-    private def generateRadarChart(symptoms, weights) {
+    private def generateSingleSeriesRadarChart(symptoms, weights, seriesLbl, titleLbl, outputStream) {
 
-        RadarChart chart = new RadarChartBuilder().width(1000).height(800).title("COVID-19 Symptoms Radar Chart").build();
+        RadarChart chart = new RadarChartBuilder().width(chartWidth).height(chartHeight).title(titleLbl).build();
         chart.setVariableLabels(symptoms)
+        chart.getStyler().setLegendPosition(LegendPosition.InsideSW);
 
-        chart.addSeries("All Patient Data", weights);
+        chart.addSeries(seriesLbl, weights)
 
-        BitmapEncoder.saveBitmap(chart, "./allPatientSymptoms", BitmapFormat.JPG)
+        BitmapEncoder.saveBitmap(chart, outputStream, BitmapFormat.JPG)
     }
 
-    def getRiskScore(allSymptoms, patientSymptoms) {
+    private def generateDoubleSeriesRadarChart(symptoms, weightsSeries1, seriesLbl1, weightsSeries2, seriesLbl2, titleLbl, outputStream) {
 
-        def symps = []
-        def props = []
+        RadarChart chart = new RadarChartBuilder().width(chartWidth).height(chartHeight).title(titleLbl).build();
+        chart.setVariableLabels(symptoms)
+        chart.getStyler().setLegendPosition(LegendPosition.InsideSW);
+
+        chart.addSeries(seriesLbl1, weightsSeries1)
+        chart.addSeries(seriesLbl2, weightsSeries2)
+
+        BitmapEncoder.saveBitmap(chart, outputStream, BitmapFormat.JPG)
+    }
+
+    def getAllSymptomsRadarChart(allSymptomsMap, outputStream, seriesLbl) {
+
+        generateSingleSeriesRadarChart(allSymptomsMap.keySet() as String[], allSymptomsMap.values() as double[],
+                seriesLbl, 'COVID-19 Symptoms Radar Chart', outputStream)
+    }
+
+    def getPatientSymptomsRadarChart(allSymptomsMap, patientSymptoms, outputStream, seriesLbl) {
+
+        def patientSymptomsMap = allSymptomsMap.clone()
+
+        patientSymptomsMap.each {
+            if (!(it.key.trim().toLowerCase() in patientSymptoms.collect { it.trim().toLowerCase() }))
+                it.value = 0.0
+        }
+
+        generateSingleSeriesRadarChart(patientSymptomsMap.keySet() as String[], patientSymptomsMap.values() as double[],
+                seriesLbl, 'COVID-19 Symptoms Radar Chart', outputStream)
+    }
+
+    def getDoubleSeriesRadarChart(allSymptomsMap, patientSymptoms, outputStream, seriesLbl1, seriesLbl2) {
+
+        def patientSymptomsMap = allSymptomsMap.clone()
+
+        patientSymptomsMap.each {
+            if (!(it.key.trim().toLowerCase() in patientSymptoms.collect { it.trim().toLowerCase() }))
+                it.value = 0.0
+        }
+
+        generateDoubleSeriesRadarChart(allSymptomsMap.keySet() as String[], allSymptomsMap.values() as double[],
+                seriesLbl1, patientSymptomsMap.values() as double[], seriesLbl2, 'COVID-19 Symptoms Radar Chart', outputStream)
+    }
+
+    def getRiskScore(allSymptomsMap, patientSymptoms) {
 
         def returnedMap = [:]
-        returnedMap["maxPossibleSymptomScore"] = 0.0
-        returnedMap["yourPatientSymptomScore"] = 0.0
-        returnedMap["yourPatientSymptomsList"] = []
+        returnedMap['maxPossibleSymptomScore'] = allSymptomsMap.values().sum()
 
-        allSymptoms.each {
-            returnedMap["maxPossibleSymptomScore"] += it.value
-            symps.add(it.key)
-            props.add(it.value)
+        def yourPatientSymptomsMap = allSymptomsMap.findAll {
+            it.key.trim().toLowerCase() in patientSymptoms.collect { it.trim().toLowerCase() }
         }
-        patientSymptoms.each { symptom ->
-            def foundSymptomVal = allSymptoms.find { it.key.trim().toLowerCase() == symptom.trim().toLowerCase() }?.value
+        returnedMap['yourPatientSymptomScore'] = yourPatientSymptomsMap.values().sum()
 
-            if (foundSymptomVal != null) {
-                returnedMap["yourPatientSymptomsList"] << [(symptom): foundSymptomVal]
-                returnedMap["yourPatientSymptomScore"] += foundSymptomVal
-            }
-        }
+        returnedMap['yourPatientSymptomsList'] = yourPatientSymptomsMap.collect { symptom, prop -> [(symptom): prop] }
 
-        returnedMap["finalRiskScore"] = returnedMap["yourPatientSymptomScore"] / returnedMap["maxPossibleSymptomScore"]
+        returnedMap['finalRiskScore'] = returnedMap.yourPatientSymptomScore / returnedMap.maxPossibleSymptomScore
 
-        this.generateRadarChart(symps as String[], props as double[])
-
-        return returnedMap
+        returnedMap
     }
 
     @Override

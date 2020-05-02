@@ -23,7 +23,7 @@ class ExaminationController {
     }
 
     def getRiskScore() {
-        try{
+        try {
             def sql = new Sql(dataSource)
             def sqlStr = "SELECT SYMPTOM_NAME, (SUM(SYMPTOM_WEIGHT) * 1.0) / (SELECT SUM(QUANTITY) FROM PATIENT) AS 'PROPORTION' FROM PATIENT_SYMPTOMS NATURAL JOIN SYMPTOMS GROUP BY SYMPTOM_ID"
             def list = sql.rows(sqlStr)
@@ -38,7 +38,7 @@ class ExaminationController {
 
             render returnedMap as JSON
         }
-        catch (Exception e){
+        catch (Exception e) {
             println(e.getStackTrace())
             def failureJson = [message: "Failure: " + e.getMessage()]
             render failureJson as JSON

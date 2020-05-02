@@ -21,7 +21,49 @@ class SymptomComparisonCalculator {
                 break
         }
 
-        return symptomStatisticChecker.getRiskScore(allSymptoms, patientSymptoms);
+        symptomStatisticChecker.getRiskScore(allSymptoms, patientSymptoms);
+    }
+
+    def getAllSymptomRadarChart(allSymptoms, outputStream) {
+        def symptomStatisticChecker
+        switch (illness.toUpperCase()) {
+            case "COVID19":
+                symptomStatisticChecker = new Covid19SymptomStatisticChecker()
+                break
+            default:
+                symptomStatisticChecker = new SymptomStatisticChecker()
+                break
+        }
+
+        symptomStatisticChecker.getAllSymptomsRadarChart(allSymptoms, outputStream, "Aggregate Patient Symptoms")
+    }
+
+    def getPatientSymptomRadarChart(allSymptoms, outputStream) {
+        def symptomStatisticChecker
+        switch (illness.toUpperCase()) {
+            case "COVID19":
+                symptomStatisticChecker = new Covid19SymptomStatisticChecker()
+                break
+            default:
+                symptomStatisticChecker = new SymptomStatisticChecker()
+                break
+        }
+
+        symptomStatisticChecker.getPatientSymptomsRadarChart(allSymptoms, patientSymptoms, outputStream, "Your Patient Symptoms")
+    }
+
+    def getDoubleSeriesRadarChart(allSymptoms, outputStream) {
+        def symptomStatisticChecker
+        switch (illness.toUpperCase()) {
+            case "COVID19":
+                symptomStatisticChecker = new Covid19SymptomStatisticChecker()
+                break
+            default:
+                symptomStatisticChecker = new SymptomStatisticChecker()
+                break
+        }
+
+        symptomStatisticChecker.getDoubleSeriesRadarChart(allSymptoms, patientSymptoms, outputStream, "All Patient Symptoms", "Your Patient Symptoms")
     }
 
     def getSymptomSimilarities() {
