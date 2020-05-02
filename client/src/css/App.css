@@ -1,34 +1,34 @@
-input{
-  margin: 10px;
+input {
+    margin: 10px;
 }
 
-.nav-bar{
-  position: fixed;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 50px;
-  z-index: 2;
+.nav-bar {
+    position: fixed;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 2;
 }
 
-nav table{
-  width: 100%;
+nav table {
+    width: 100%;
 }
 
 
-nav td{
-  text-align: center;
-  width: 33%;
+nav td {
+    text-align: center;
+    width: 33%;
     border: none;
 }
 
 nav td a {
-  font-size: 30px;
-  color: black;
+    font-size: 30px;
+    color: black;
 }
 
-.nav-button{
-  background-color: #33b5e5 ;
+.nav-button {
+    background-color: #33b5e5;
 }
 
 .nav-button a:hover {
@@ -36,67 +36,87 @@ nav td a {
     text-decoration: none;
 }
 
-.nav-button a{
+.nav-button a {
     font-family: Heebo;
 }
 
-.is-active{
-  color: white;
+.is-active {
+    color: white;
 }
 
 .riskTable, .symptomsTable table, th, td {
-  border: 1px solid black;
-  font-size: 25px;
+    border: 1px solid black;
+    font-size: 25px;
 }
 
-.riskTable, .symptomsTable{
-  margin-bottom: 25px;
+.riskTable, .symptomsTable {
+    margin-bottom: 25px;
 }
 
-.risk-score-container{
-  position: relative;
-  margin: 0 auto 15px;
-  top: 55px;
-  z-index: 1;
+.symptomsTable{
+    margin-top: 25px;
+}
+
+.risk-score-container {
+    position: relative;
+    margin: 0 auto 15px;
+    top: 55px;
+    z-index: 1;
     width: 95%;
     height: 95%;
 }
 
-.reset-button{
-  font-size: 25px;
+.risk-score-results-container{
+    position: relative;
+    margin: 0 auto 15px;
+    top: 55px;
+    z-index: 1;
+    width: 900px;
+    height: 95%;
+    text-align: center;
 }
 
-.add-patient-container{
-  position: relative;
-  top: 55px;
-  z-index: 1;
+.reset-button {
+    font-size: 25px;
+}
+
+.add-patient-container {
+    position: relative;
+    top: 55px;
+    z-index: 1;
     width: 95%;
     height: 95%;
     margin: auto auto 15px;
 }
 
-.add-patient-input-container{
+.add-patient-input-container {
     margin: 16px;
 }
 
-.add-patient-input-container td{
+.add-patient-input-container td {
     font-size: 16px;
     border: none;
 }
 
-h1{
-  text-align: center;
+h1 {
+    text-align: center;
 }
-.prompt{
+
+.prompt {
     margin-left: 20px;
     margin-bottom: 5px;
     font-size: 20px;
     width: 25%;
 }
-.submit-btn{
+
+.submit-btn {
     display: block;
     width: 90%;
     margin: 25px auto 0;
     position: relative;
     bottom: 15px;
+}
+
+.graphic-container{
+    margin-top: 25px;
 }

@@ -62,7 +62,7 @@ export default class GetPatientRiskScore extends Component {
             return (
                 <div className='risk-score-container shadow-lg'>
                     <div className='prompt'>Select all of the symptoms that apply to your patient to calculate a risk score.</div>
-                    <hr/>
+                    <hr />
                     <form onSubmit={this.handleSubmit}>
                         <ul>
                             <li><label htmlFor='diarrhea'>Diarrhea</label><input id='diarrhea' type='checkbox' name='symptoms' value='Diarrhea' /></li>
@@ -92,29 +92,46 @@ export default class GetPatientRiskScore extends Component {
             )
         } else {
             return (
-                <table className="risk-score-container">
+                <table className="risk-score-results-container">
                     <tr>
                         <h1>Patient's Risk Score</h1>
                         <Score
-                          value={Math.floor(this.state.response.finalRiskScore * 100)}
-                          maxValue={100}
-                          borderWidth={20}
-                          gap={5}
-                          maxAngle={260}
-                          rotation={90}
-                          stepsColors={[
-                              '#3da940',
-                              '#3da940',
-                              '#3da940',
-                              '#53b83a',
-                              '#84c42b',
-                              '#f1bc00',
-                              '#ed8d00',
-                              '#d12000',
-                          ]}
+                            value={Math.floor(this.state.response.finalRiskScore * 100)}
+                            maxValue={100}
+                            borderWidth={20}
+                            gap={5}
+                            maxAngle={260}
+                            rotation={90}
+                            stepsColors={[
+                                '#3da940',
+                                '#3da940',
+                                '#3da940',
+                                '#53b83a',
+                                '#84c42b',
+                                '#f1bc00',
+                                '#ed8d00',
+                                '#d12000',
+                            ]}
                         />
+                        <hr />
                     </tr>
+                    <br />
                     <tr>
+                        <h1>Patient's Symptoms Radar Chart</h1>
+                        <img className='graphic-container' alt='Patient symptoms radar chart'
+                             src={SERVER_URL + '/image/getPatientSymptomsRadarChart?illness=COVID19&symptoms=' + this.state.patientData.symptoms} />
+                        <hr />
+                    </tr>
+                    <br />
+                    <tr>
+                        <h1>Patient's Symptoms Versus COVID-19 Positive Patients Radar Chart</h1>
+                        <img className='graphic-container' alt='Patient symptoms versus COVID19 positive patients radar chart'
+                             src={SERVER_URL + '/image/getDoubleSeriesRadarChart?illness=COVID19&symptoms=' + this.state.patientData.symptoms} />
+                        <hr />
+                    </tr>
+                    <br />
+                    <tr>
+                        <h1>Risk Score for each Patient Symptom</h1>
                         <table className="symptomsTable">
                             <thead>
                             <tr>
@@ -135,8 +152,11 @@ export default class GetPatientRiskScore extends Component {
                             }
                             </tbody>
                         </table>
+                        <hr />
                     </tr>
+                    <br />
                     <tr>
+                        <h1>Patient's Risk Score Details</h1>
                         <table className="riskTable">
                             <thead>
                             <tr>
