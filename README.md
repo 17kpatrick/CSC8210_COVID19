@@ -19,6 +19,23 @@ the patient has separated by commas with no spaces.)
 EXAMPLE: http://localhost:8080/examination/getPatientRiskScore?illness=COVID19&symptoms=symptom1,symptom2,symptom3
 Retrieves patient risk score based on data in database.
 
+GET '/image/getDoubleSeriesRadarChart' params: illness (i.e. COVID19), symptoms (List symptoms that pertain to patient)
+EXAMPLE 'http://localhost:8080/image/getDoubleSeriesRadarChart?illness=COVID19&symptoms=symptom1,symptom2,symptom3'
+Generates radar chart of most common symptoms overlayed by patient symptoms.
+
+GET '/image/getPatientSymptomsRadarChart' params: illness (i.e. COVID19), symptoms (List symptoms that pertain to patient)
+EXAMPLE 'http://localhost:8080/image/getPatientSymptomsRadarChart?illness=COVID19&symptoms=symptom1,symptom2,symptom3'
+Generates radar chart of patient symptoms.
+
+GET '/image/getAllSymptomsRadarChart' params: illness (i.e. COVID19)
+EXAMPLE 'http://localhost:8080/image/getAllSymptomsRadarChart?illness=COVID19'
+Generates radar chart of most common symptoms.
+
+GET '/image/getAllSymptomsBarChart' params: illness (i.e. COVID19)
+EXAMPLE 'http://localhost:8080/image/getAllSymptomsBarChart?illness=COVID19'
+Generates bar chart of most common symptoms.
+
+
 POST '/examination/addPatient' params: JSON in the following format:
 
 {
