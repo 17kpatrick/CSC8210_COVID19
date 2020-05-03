@@ -97,6 +97,35 @@ class ImageController {
         }
     }
 
+    def getAllSymptomsBarChart() {
+
+        def outputStream = response.outputStream
+        response.setContentType("image/jpeg")
+        try {
+            def allSymptomsMap = getSqlQueryResults()
+            def patientSymptoms = params?.symptoms?.split(',')
+
+            def symptomComparisonCalculator = new SymptomComparisonCalculator(params.illness, patientSymptoms)
+
+            symptomComparisonCalculator.getAllSymptomBarChart(allSymptomsMap, outputStream)
+        }
+        catch (Exception e) {
+            println(e.getStackTrace())
+            def failureJson = [message: "Failure: " + e.getMessage()]
+            render failureJson as JSON
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close()
+                } catch (IOException e) {
+                    println(e.getStackTrace())
+                    def failureJson = [message: "Failure: " + e.getMessage()]
+                    render failureJson as JSON
+                }
+            }
+        }
+    }
+
     private def getSqlQueryResults() {
         try {
             def sql = new Sql(dataSource)

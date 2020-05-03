@@ -5,13 +5,10 @@ export default class Analytics extends Component {
     render() {
         return (
             <div>
-                <p>
-                    <br/><br/><br/>
-                    This is the analytics page.
-                    <br/><br/><br/>
-                    <img
-                        src="http://localhost:8080/image/getDoubleSeriesRadarChart?illness=COVID19&symptoms=Headache,Sore throat,Lack of Taste,Difficulty breathing,Sputum Production,Lack of Smell,Rash"></img>
-                </p>
+                <br/><br/><br/><br/>
+                <h1>All Patient Symptoms Bar Chart</h1>
+                <img className='graphic-container' alt='Patient symptoms radar chart'
+                     src={SERVER_URL + '/image/getAllSymptomsBarChart?illness=COVID19'}/>
             </div>
         );
     }

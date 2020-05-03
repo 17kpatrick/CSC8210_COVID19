@@ -4,15 +4,18 @@ import com.opencsv.CSVReader
 
 import org.knowm.xchart.RadarChart
 import org.knowm.xchart.RadarChartBuilder
+import org.knowm.xchart.CategoryChart
+import org.knowm.xchart.CategoryChartBuilder
 import org.knowm.xchart.BitmapEncoder
 import org.knowm.xchart.BitmapEncoder.BitmapFormat
 import org.knowm.xchart.style.Styler.LegendPosition
+import org.knowm.xchart.style.Styler.TextAlignment
 
 class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     private def symptomMap = [:]
-    private final def chartWidth = 900
-    private final def chartHeight = 900
+    private final def chartWidth = 800
+    private final def chartHeight = 600
 
     Covid19SymptomStatisticChecker() {
         this.readStatisticsFile()
@@ -49,6 +52,18 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
 
     }
 
+    private def generateSingleSeriesBarChart(symptoms, weights, seriesLbl, titleLbl, outputStream) {
+
+        CategoryChart chart = new CategoryChartBuilder().width(chartWidth).height(chartHeight).title(titleLbl).xAxisTitle("Symptoms").yAxisTitle("Proportion of Patient Population").build()
+        chart.getStyler().setLegendPosition(LegendPosition.InsideNW)
+        chart.getStyler().setXAxisLabelRotation(60)
+        chart.getStyler().setXAxisLabelAlignment(TextAlignment.Right)
+        chart.getStyler().setXAxisLabelAlignmentVertical(TextAlignment.Right)
+
+        chart.addSeries(seriesLbl, Arrays.asList(symptoms), Arrays.asList(weights))
+        BitmapEncoder.saveBitmap(chart, outputStream, BitmapFormat.JPG)
+    }
+
     private def generateSingleSeriesRadarChart(symptoms, weights, seriesLbl, titleLbl, outputStream) {
 
         RadarChart chart = new RadarChartBuilder().width(chartWidth).height(chartHeight).title(titleLbl).build();
@@ -75,6 +90,14 @@ class Covid19SymptomStatisticChecker extends SymptomStatisticChecker {
     def getAllSymptomsRadarChart(allSymptomsMap, outputStream, seriesLbl) {
 
         generateSingleSeriesRadarChart(allSymptomsMap.keySet() as String[], allSymptomsMap.values() as double[],
+                seriesLbl, 'COVID-19 Symptoms Radar Chart', outputStream)
+    }
+
+    def getAllSymptomsBarChart(allSymptomsMap, outputStream, seriesLbl) {
+
+        allSymptomsMap = allSymptomsMap.sort { it.value }
+
+        generateSingleSeriesBarChart(allSymptomsMap.keySet() as String[], allSymptomsMap.values() as double[],
                 seriesLbl, 'COVID-19 Symptoms Radar Chart', outputStream)
     }
 

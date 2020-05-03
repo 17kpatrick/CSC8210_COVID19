@@ -38,6 +38,20 @@ class SymptomComparisonCalculator {
         symptomStatisticChecker.getAllSymptomsRadarChart(allSymptoms, outputStream, "Aggregate Patient Symptoms")
     }
 
+    def getAllSymptomBarChart(allSymptoms, outputStream) {
+        def symptomStatisticChecker
+        switch (illness.toUpperCase()) {
+            case "COVID19":
+                symptomStatisticChecker = new Covid19SymptomStatisticChecker()
+                break
+            default:
+                symptomStatisticChecker = new SymptomStatisticChecker()
+                break
+        }
+
+        symptomStatisticChecker.getAllSymptomsBarChart(allSymptoms, outputStream, "Aggregate Patient Symptoms")
+    }
+
     def getPatientSymptomRadarChart(allSymptoms, outputStream) {
         def symptomStatisticChecker
         switch (illness.toUpperCase()) {

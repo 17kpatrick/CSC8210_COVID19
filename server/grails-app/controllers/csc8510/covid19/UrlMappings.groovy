@@ -19,6 +19,7 @@ class UrlMappings {
         get "/image/getDoubleSeriesRadarChart?${illness}?&?${symptoms}?"(controller: 'image', action: 'getDoubleSeriesRadarChart')
         get "/image/getPatientSymptomsRadarChart?${illness}?&?${symptoms}?"(controller: 'image', action: 'getPatientSymptomsRadarChart')
         get "/image/getAllSymptomsRadarChart?${illness}?&?${symptoms}?"(controller: 'image', action: 'getAllSymptomsRadarChart')
+        get "/image/getAllSymptomsBarChart?${illness}?&?${symptoms}?"(controller: 'image', action: 'getAllSymptomsBarChart')
 
         //http://localhost:8080/examination/addPatient - See exampleAddPatientJson.json for example of JSON body that must be included in request.
         post "/examination/addPatient" (controller: 'examination', action: 'addPatient', parseRequest: true)
