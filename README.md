@@ -1,3 +1,6 @@
+gradlew server:bootRun will start the server.
+gradlew client:start will start the client.
+
 GET '/patient', params: max (Specify max number of records to retrieve),
 Retrieves patients from database.
 
