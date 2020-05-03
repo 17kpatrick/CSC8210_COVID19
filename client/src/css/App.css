@@ -54,6 +54,7 @@ nav td a {
 }
 
 .symptomsTable{
+    display: inline;
     margin-top: 25px;
 }
 
@@ -119,4 +120,15 @@ h1 {
 
 .graphic-container{
     margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.analytics-container{
+    position: relative;
+    top: 55px;
+    margin: auto auto 15px;
+    width: 95%;
+    height: 95%;
+    z-index: 1;
+    text-align: center;
 }
